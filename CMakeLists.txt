@@ -10,6 +10,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FORTIFY_SOURCE=2 -fstack-protector \
 option(BUILD_MAVLINK "Build with mavlink support" ON)
 option(BUILD_WIFI "Build with WiFi support" ON)
 option(BUILD_TESTS "Build unit/debug tests" ON)
+option(BUILD_PROGRAMS "Build local utility programs" ON)
 
 if(DEFINED ODID_AUTH_MAX_PAGES)
 	message(STATUS "Using externally defined ODID_AUTH_MAX_PAGES value")
@@ -32,3 +33,8 @@ endif()
 if(BUILD_WIFI)
 	add_subdirectory(wifi)
 endif()
+
+if(BUILD_PROGRAMS)
+	add_subdirectory(programs)
+endif()
+add_subdirectory(sender)
